@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRUM - AI-Based Crop Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DRUM</h1>
+        <p>AI-Based Crop Growth Analysis and Quality Certification System</p>
+    </header>
+
+    <section id="farm-info">
+        <h2>Farm Information</h2>
+        <ul>
+            <li><strong>Farm Name:</strong> Sunny Valley Farms</li>
+            <li><strong>Variety:</strong> Shine Tomatoes</li>
+            <li><strong>GAP Certification:</strong> Certified</li>
+            <li><strong>Location:</strong> California, USA</li>
+        </ul>
+    </section>
+
+    <section id="nutrition-comparison">
+        <h2>Nutrition Changes Over 3 Months</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Sweetness (Brix)</th>
+                    <th>Acidity (pH)</th>
+                    <th>Vitamin C (mg/100g)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>2023-09-01</td><td>5.5</td><td>4.2</td><td>15</td></tr>
+                <tr><td>2023-09-15</td><td>6.0</td><td>4.1</td><td>17</td></tr>
+                <tr><td>2023-09-30</td><td>6.5</td><td>4.0</td><td>20</td></tr>
+                <tr><td>2023-10-15</td><td>7.0</td><td>3.9</td><td>22</td></tr>
+                <tr><td>2023-10-31</td><td>7.5</td><td>3.8</td><td>25</td></tr>
+                <tr><td>2023-11-15</td><td>8.0</td><td>3.7</td><td>28</td></tr>
+                <tr><td>2023-11-30</td><td>8.2</td><td>3.6</td><td>30</td></tr>
+                <tr><td>2023-12-15</td><td>8.5</td><td>3.5</td><td>32</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="graph">
+        <h2>Nutritional Changes Graph</h2>
+        <div id="plot"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 DRUM. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const dates = ["2023-09-01", "2023-09-15", "2023-09-30", "2023-10-15", "2023-10-31", "2023-11-15", "2023-11-30", "2023-12-15"];
+        const brix = [5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.2, 8.5];
+        const acidity = [4.2, 4.1, 4.0, 3.9, 3.8, 3.7, 3.6, 3.5];
+        const vitaminC = [15, 17, 20, 22, 25, 28, 30, 32];
+
+        const trace1 = {
+            x: dates,
+            y: brix,
+            mode: 'lines+markers',
+            name: 'Sweetness (Brix)'
+        };
+        const trace2 = {
+            x: dates,
+            y: acidity,
+            mode: 'lines+markers',
+            name: 'Acidity (pH)'
+        };
+        const trace3 = {
+            x: dates,
+            y: vitaminC,
+            mode: 'lines+markers',
+            name: 'Vitamin C (mg/100g)'
+        };
+
+        const data = [trace1, trace2, trace3];
+        const layout = {
+            title: 'Nutritional Changes Over 3 Months',
+            xaxis: { title: 'Date' },
+            yaxis: { title: 'Values' }
+        };
+
+        Plotly.newPlot('plot', data, layout);
+    </script>
+</body>
+</html>
